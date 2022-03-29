@@ -1,0 +1,40 @@
+create database exercicio1;
+create table pessoa
+(
+	CPF int(11) not null,
+    Nome varchar(45) not null,
+    idade int not null,
+    sexo varchar(1) not null,
+    primary key(CPF)
+);
+create table Funcionario
+(
+	idFuncionario int not null auto_increment,
+    CPF int not null,
+    constraint fk_Pessoa_CPF foreign key(CPF) references pessoa (CPF),
+    primary key(idFuncionario)
+);
+create table Professor
+(
+	idProfessor int not null auto_increment,
+    CPF int not null,
+    idDisciplina int not null,
+    constraint Pessoa_CPF foreign key(CPF) references pessoa (CPF),
+    constraint Disciplina_idDisciplina foreign key(idDisciplina) references Disciplina(idDisciplina),
+    primary key(idProfessor)
+);
+create table Aluno
+(
+	idAluno int not null auto_increment,
+    Pessoa_CPF int not null,
+    constraint fk2_Pessoa_CPF foreign key(Pessoa_CPF) references pessoa (CPF),
+    primary key(idAluno)
+);
+create table Disciplina
+(
+	idDisciplina int not null auto_increment,
+    Nome varchar(45) not null,
+    Semestre int not null,
+    CargaHoraria varchar(45) not null,
+    primary key(idDisciplina)
+);
