@@ -1,0 +1,118 @@
+create table offices
+(
+	officeCode int not null,
+    city varchar(45),
+    phone int,
+    addressLine1 int,
+    addressLine2 int,
+    state varchar (250),
+    county varchar (45),
+    postalCode int,
+    territory varchar(45),
+    primary key(officeCode)
+);
+create table productlines
+(
+	productLine int not null,
+    textDescription varchar (250),
+    htmlDescription varchar (100),
+    image blob,
+    primary key(produdtionLine)
+);
+ create table payments
+ (
+	customerNumber int not null,
+    paymentDate date,
+    amount int,
+    constraint fk_customerNumber foreign key (customerNumber) references customers(customerNumber),
+    primary key (custumerNumber)
+);
+create table employees
+(
+	employeeNumber int not null,
+    lastName varchar(45),
+    fistName varchar(45),
+    extensiom int,
+    emnail varchar(250),
+    officeCode int,
+    reportsTo varchar(250),
+    jobTitle varchar(250),
+    constraint fk_officeCOde foreign key (officeCode) references offices (officeCode),
+    constraint fk_reportsTo foreign key (reportsTo) references employees(reportsTo),
+    primary key(employeesNumber)
+);
+create table products
+(
+	productCode int not null,
+    productName varchar(45),
+    productLine int,
+    productScale varchar(45),
+    productVendor varchar(45),
+    produtDescription varchar(45),
+    quantityInStock varchar(45),
+    buyPrice float,
+    MSRP varchar,
+    constraint fk_productLine foreign key (productLine) references productlines(productLine),
+    primary key(productCode)
+);
+create table orders
+(
+	orderNumber int not null,
+    orderDate date,
+    requiredDate date,
+    shippedDate date,
+    status varchar(100),
+    comments varchar(100),
+    customerNumber int,
+    constraint fk_customerNumber foreign key (costumerNumber) references customers (customerNumber),
+    primary key(orderNumber)
+);
+create table orderdatails
+(
+	orderNumber int not null,
+    produtCode int not null,
+    quantilyOrdered varchar(100),
+    priceEach varchar(100),
+    orderLineNumber int,
+    constraint fk_orderNumber foreign key (orderNumber) references orders(orderNumber),
+	constraint fk_produtCode foreign key (produtCode) references produts(ProdutCode),
+    primary key (orderNumber, productCode)
+);
+create table customers
+(
+	customerNumber int not null,
+	customerName Varchar(45),
+	contactlastName Varchar(45),
+	contactFistName varchar(45),
+	phone int(11),
+	addressLine1 varchar(100),
+	addressLine2 varchar(100),
+	city varchar(45),
+	state varchar(45),
+	postalCode int,
+	country varchar(100),
+	salesRepEMployeesNumber int,
+	creditLimit numeric float,
+	primary key (customerNumber)
+);
+    
+    
+    
+    
+    
+    
+    
+    create table employees
+(
+	employeeNumber int not null,
+    lastName varchar(45),
+    fistName varchar(45),
+    extensiom int,
+    emnail varchar(250),
+    officeCode int,
+    reportsTo varchar(250),
+    jobTitle varchar(250),
+    constraint fk_officeCode foreign key (officeCode) references offices (officeCode),
+    constraint fk_reportsTo foreign key (reportsTo) references employees(reportsTo),
+    primary key(employeeNumber)
+);
