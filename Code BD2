@@ -116,3 +116,11 @@ create table customers
     constraint fk_reportsTo foreign key (reportsTo) references employees(reportsTo),
     primary key(employeeNumber)
 );
+
+
+
+#insert into orderdatails (orderNumber,productCode) values (5,21);
+insert into orders (orderNumber, orderDate) values (5, '2022/03/29');
+#insert into payments( customerNumber, paymentDate) values (6, '2022/02/28');
+insert into products(productCode, productLine) values(21,32);
+select * from orderdatails;
