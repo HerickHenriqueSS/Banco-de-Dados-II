@@ -1,0 +1,47 @@
+select CARGO_ID, avg(salario) as Salario from TB_FUNCIONARIOS group by CARGO_ID;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#having filtra os registros que devem ser apresentados no Grup By.
+
+select ESCOLARIDADE, avg(salario) as Media from TB_FUNCIONARIOS group by ESCOLARIDADE having avg(salario) >1000;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Distinct permite eliminar registros repetidos de uma consulta.  Raramente utilizado
+
+select distinct(escolaridade) from TB_FUNCIONARIOS;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Limit permite escolher quantos registros deseja-se visualizar. Offset 
+#X: quantos registros devem ser exibidos a partir de Y;
+#Y: quabtos registros devem ser ignorados(pulados)
+
+select campo from tabela Limit x Offset Y;
+select nome from TB_FUNCIONARIOS order by nome limit 3 offset 2;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#AS permite trocar o nome de um campo no momento da visualização do resultado.
+
+select nome as FUNCIONARIO, escolaridade as Nível from TB_FUNCIONARIOS;
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#IN permite verificar se um deterninado valor esta contido dentro de um deternminado conjuto.
+
+select nome from TB_FUNCIONARIOS where escolaridade in ("Doutor", "Graduado");
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Between pode selecionar registros que estçao dentro de um determinado intervalo utilizando na condição WHERE o parâmetro BETWEEN
+
+select nome from TB_FUNCIONARIOS where salario between 100 and 2000;
+select nome from TB_FUNCIONARIOS where nome like "a%";
+
+#Like esse parâmetro permite verificar se uma string contem um padrão especifico ou não.
+
+#visualizando nomes que começam com "A".
+select nome from TB_FUNCIONARIOS where nome like "a%";
+
+#visualizando nomes que terminam com "re".
+select nome from TB_FUNCIONARIOS where nome like "%re";
+
+#visualizando nomes que tem "RE" em alguma parte do nome.
+select nome from TB_FUNCIONARIOS where nome like "%re%";
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
