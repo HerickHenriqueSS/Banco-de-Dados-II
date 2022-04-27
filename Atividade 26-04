@@ -1,0 +1,14 @@
+SELECT * FROM world.country;
+
+select count(Name) from country;
+
+select Continent, avg(SurfaceArea) as Media from country group by Continent having Continent != "Oceania";
+
+select Name from country where Code2 in("AF%" or "AI%" or "BZ%" or "BS%");
+
+select distinct(language) as línguas from countrylanguage order by language desc limit 5 offset 3 ;
+
+select Name from country where population between 20000 and 100000;
+
+select Name from country where Name like "A%" or "%d" or "%-%";
+
