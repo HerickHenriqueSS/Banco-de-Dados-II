@@ -1,0 +1,18 @@
+select c.customerName, e.firstName, c.country from employees as e inner join customers as c inner join 
+offices as o on e.employeeNumber = c.salesRepEmployeeNumber and
+e.officeCode = o.officeCode where o.country="USA";
+
+select c.customerName, p.amount from customers as c inner join payments as p 
+on c.customerNumber = p.customerNumber 
+where p.amount > 1000; 
+
+select c.customerName, o.orderDate from customers as c inner join orders as o 
+on c.customerNumber = o.customerNumber
+where o.shippedDate < "2005-04-30";
+
+select o.orderNumber, p.productDescription from products as p inner join orderdetails as o 
+on p.productCode = o.productCode
+where p.productDescription like "%train%";
+
+select c.customerName, c.country, e.firstName, o.city from customers as c inner join employees as e inner join offices as o
+on e.officeCode = o.officeCode and c.city = o.city and c.country = o.country where c.country = "USA" order by o.city ;
